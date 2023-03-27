@@ -9,9 +9,16 @@ export const App = () => {
   const [neutral, setNeutral] = useState(0);
   const [bad, setBad] = useState(0);
   const handleClick = e => {
-    if (e.target.name === 'good') setGood(prevState => prevState + 1)
-    else if (e.target.name === 'neutral') setNeutral(prevState => prevState + 1)
-    else if (e.target.name === 'bad') setBad(prevState => prevState + 1)
+    switch (e.target.name) {
+      case "good": setGood(prevState => prevState + 1)
+        break;
+      case 'neutral': setNeutral(prevState => prevState + 1)
+        break;
+      case 'bad': setBad(prevState => prevState + 1)
+        break;
+      default:
+        break;
+    }
   }
   const total = good + neutral + bad;
   const positivePercentage = Math.ceil((good / total) * 100)
